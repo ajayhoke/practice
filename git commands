@@ -1,0 +1,47 @@
+To config git variable 
+git config --global user.name ["First last"]
+git config --global user.email ["mail"]
+git config --global color.ui auto 
+
+to check config variables
+git config user.name
+git config user.email
+
+-----------------------------------------------------------------
+Setup and init
+git init
+git clone [url]
+
+
+-----------------------------------------------------------------
+STAGE AND SNAPSHOT
+git status
+git add 'file'
+git add .
+git reset 'file name'
+git diff       (diff of what is changed but not staged)
+git diff --staged  
+git commit -m 'comment'
+
+------------------------------------------------------------------
+BRANCH AND MERGE
+git branch    (will show all branches)
+git branch 'branch name'
+git checkout 'branch name'
+git merge 'branch'      (merge the sepcified branch history into current branch)
+git log
+
+
+-------------------------------------------------------------------
+INSPECT AND COMPARE
+git log
+git log branchb..brancha  (shows commit on branch a that are not on branch b)
+git log --follow'file'    (shows commit that changed file)
+git show 'SHA'
+
+
+
+
+
+
+
