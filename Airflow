@@ -1,0 +1,70 @@
+Installation steps for Single Node Airflow
+
+First, make sure you have installed Docker Desktop and Visual Studio. If not, take a look at these links:
+
+Get Docker(desktop app)
+Get Visual Studio Code
+
+To Enable BIOS in local computer
+Restart computer and press F2 key continuously.
+Then in setting enable BIOS and virtualization both
+
+Once Docker engine is running fine on local computer follow the next steps
+
+Install Apache Airflow with Docker
+
+
+Create a folder materials in your Documents
+
+In this folder, download the following file: docker compose file
+
+If you right-click on the file and save it, you will end up with docker-compose.yaml.txt. Remove the .txt and keep docker-compose.yaml
+
+Open your terminal or CMD and go into Documents/materials
+
+Open Visual Studio Code by typing the command: code .
+
+You should have something like this
+
+
+Right click below docker-compose.yml and create a new file .env (don't forget the dot before env)
+
+In this file add the following lines
+
+AIRFLOW_IMAGE_NAME=apache/airflow:2.4.2
+AIRFLOW_UID=50000
+and save the file
+
+
+Go at the top bar of Visual Studio Code -> Terminal -> New Terminal
+
+
+In your new terminal at the bottom of Visual Studio Code, type the command docker-compose up -d and hit ENTER
+
+
+You will see many lines scrolled, wait until it's done. Docker is downloading Airflow to run it. It can take up to 5 mins depending on your connection. If Docker raises an error saying it can't download the docker image, ensure you are not behind a proxy/vpn or corporate network. You may need to use your personal connection to make it work. At the end, you should end up with something like this:
+
+Well done, you've just installed Apache Airflow with Docker! 🎉
+
+Open your web browser and go to localhost:8080
+
+## If you forgot password or add a new user 
+Run the following command to list all running Docker containers:
+docker ps
+
+Enter the Airflow webserver container (or any Airflow container that has access to the Airflow CLI):
+docker exec -it airflow-webserver bash
+
+in above command replace airflow-webserver with acutual airflow webserver id or name
+
+Reset password for the existing admin user:
+airflow users reset-password --username admin --password newpassword123
+
+Create a New Admin User (If Resetting Password Doesn’t Work)
+airflow users create \
+  --username newadmin \
+  --firstname Firstname \
+  --lastname Lastname \
+  --email user@example.com \
+  --role Admin \
+  --password newpassword123
